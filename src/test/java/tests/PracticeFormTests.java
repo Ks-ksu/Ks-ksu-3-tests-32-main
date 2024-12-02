@@ -2,11 +2,9 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -14,13 +12,11 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormTests {
     @BeforeAll
-    static void beforeAll() {
+    static void beforeAllsetup() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen=false;
-        Configuration.timeout = 5000; // default 4000
-    }
+        }
     @Test
     void fillFormTest() {
         open("/automation-practice-form");
@@ -57,7 +53,7 @@ public class PracticeFormTests {
         $(".table").$(byText("State and City")).sibling(0).shouldHave(text("NCR Delhi"));
     }
     @AfterEach
-    void afterEach() {
+    void afterEachteardown() {
         Selenide.closeWebDriver();
     }
 }
